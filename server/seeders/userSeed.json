@@ -1,0 +1,52 @@
+[
+  {
+    "email": "bkernighan@foodtruckdepot.dev",
+    "password": "password01",
+    "role": "vendor"
+  },
+  {
+    "email": "mkanatalexander@foodtruckdepot.dev",
+    "password": "password02",
+    "role": "vendor"
+  },
+  {
+    "email": "wtls@foodtruckdepot.dev",
+    "password": "password03",
+    "role": "vendor"
+  },
+  {
+    "email": "kbeck@foodtruckdepot.dev",
+    "password": "password04",
+    "role": "vendor"
+  },
+  {
+    "email": "evberard@foodtruckdepot.dev",
+    "password": "password05",
+    "role": "vendor"
+  },
+  {
+    "email": "akay@foodtruckdepot.dev",
+    "password": "password06",
+    "role": "vendor"
+  },
+  {
+    "email": "choare@foodtruckdepot.dev",
+    "password": "password07",
+    "role": "vendor"
+  },
+  {
+    "email": "dthomas@foodtruckdepot.dev",
+    "password": "password08",
+    "role": "vendor"
+  },
+  {
+    "email": "dknuth@foodtruckdepot.dev",
+    "password": "password09",
+    "role": "vendor"
+  },
+  {
+    "email": "lernantino@foodtruckdepot.dev",
+    "password": "password10",
+    "role": "vendor"
+  }
+]
