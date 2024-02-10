@@ -4,6 +4,16 @@ const typeDefs = `
     email: String
     password: String
     role: String
+    trucks: [FoodTruck]
+  }
+
+  type FoodTruck {
+    _id: ID
+    vendorName: String!
+    description: String
+    image: String
+    popular: String
+    owner: String!
   }
 
   type Auth {
@@ -14,6 +24,11 @@ const typeDefs = `
   type Query {
     users: [User]
     user(email: String!): User
+  }
+
+  type Mutation {
+    createUser(email: String!, password: String!, role: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 `;
 
