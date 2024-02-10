@@ -1,0 +1,7 @@
+export {default as pic1} from "../assets/vendor1.png"
+export {default as pic2} from "../assets/vendor2.png"
+export {default as pic3} from "../assets/vendor3.png"
+export {default as pic4} from "../assets/vendor4.png"
+export {default as pic5} from "../assets/vendor5.png"
+export {default as pic6} from "../assets/vendor6.png"
+export {default as pic7} from "../assets/vendor7.png"
