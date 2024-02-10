@@ -10,14 +10,20 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import styles from './Vendor.module.css'
 import * as vendors from '../../assets';
 
 const CustomCard = styled(Card)(({ theme }) => ({
-  backgroundColor: '#F97242', // Orange background color
+  backgroundColor: 'var(--orange)', // Orange background color
   color: 'black', // Black text color
   marginBottom: theme.spacing(2), // Add space between cards
   width: '100%', // Set a fixed width for all cards
 }));
+
+const LocationTypography = styled(Typography)({
+  fontSize: '1.2em', // Increase font size
+  marginBottom: '20px', // Add space between location and image
+});
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -41,7 +47,7 @@ export default function Vendor({ vendor }) {
   const [expanded, setExpanded] = useState(false);
   const [favorited, setFavorited] = useState(false);
 
-  const { vendorName, description, image, popular} = vendor;
+  const { vendorName, description, image, popular, location } = vendor;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -61,6 +67,9 @@ export default function Vendor({ vendor }) {
           }
           title={vendorName}
         />
+        <LocationTypography variant="body2" color="text.secondary" align="center">
+          {location}
+        </LocationTypography>
         <CardMedia
           component="img"
           height="194"
@@ -74,7 +83,7 @@ export default function Vendor({ vendor }) {
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="favorite" onClick={handleFavoriteClick}>
-            <FavoriteIcon style={{ color: favorited ? '#41B643' : 'inherit' }} />
+            <FavoriteIcon style={{ color: favorited ? 'var(--green)' : 'inherit' }} />
           </IconButton>
           <ExpandMore
             expand={expanded}
