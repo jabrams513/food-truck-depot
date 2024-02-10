@@ -1,9 +1,15 @@
+:root {
+  --green: #41b643;
+  --orange: #F97242;
+  --white: #E6E6E6;
+}
+
 header {
   font-family: 'Fjalla One', sans-serif;
 }
 
 body {
-  background-color: #e6e6e6;
+  background-color: var(--white);
 
 font-family: 'Radley', serif;
 }
@@ -54,5 +60,5 @@ h3 {
 }
 
 .clicked {
-  color: #41B643;
+  color: var(--green);
 }
