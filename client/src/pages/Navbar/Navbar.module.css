@@ -1,0 +1,137 @@
+.navbar {
+  background-color: #f97242;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-family: "Fjalla One";
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: inherit;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdownContent {
+  margin-top: 63px;
+  display: none;
+  position: absolute;
+  background-color: #f97242;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: -20px;
+}
+
+.dropdownContent a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownContent a:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.dropdownContent {
+  display: block;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+}
+
+.searchBar input[type="text"] {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.searchBar button[type="submit"] {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 80px;
+  height: auto;
+}
+
+.logoText {
+  font-family: "Fjalla One";
+  font-size: 18px;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+button {
+  font-family: "Fjalla One";
+}
+
+.hamburger {
+  display: block; 
+  width: 40px;
+  height: 50px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburgerCheckbox {
+  display: none;
+}
+
+.line {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  transition: 0.5s;
+}
+.line:nth-child(1) {
+  top: 12px;
+}
+.line:nth-child(2) {
+  top: 24px;
+}
+.line:nth-child(3) {
+  top: 36px;
+}
+
+.hamburgerCheckbox:checked + .hamburger .line:nth-child(1) {
+  transform: translateY(12px) rotate(-45deg);
+}
+
+.hamburgerCheckbox:checked + .hamburger .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerCheckbox:checked + .hamburger .line:nth-child(3) {
+  transform: translateY(-12px) rotate(45deg);
+}
+
+.hamburgerPositioner {
+  float: right;
+  margin-right: 30px;
+  display: inline-block;
+}
