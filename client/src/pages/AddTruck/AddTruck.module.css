@@ -1,0 +1,29 @@
+:root {
+  --green: #41b643;
+  --orange: #F97242;
+  --white: #E6E6E6;
+}
+
+header {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+body {
+  background-color: var(--white);
+  font-family: 'Radley', serif;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+.success-message {
+  color: var(--green);
+  margin-top: 10px;
+}
+
+.success-button {
+  background-color: var(--green) !important;
+  color: var(--orange) !important;
+}

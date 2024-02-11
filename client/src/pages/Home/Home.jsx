@@ -1,20 +1,26 @@
+// Home.js
+
 import React, { useState } from 'react';
 import styles from "./Home.module.css";
 import Vendor from '../Vendor/Vendor.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faIceCream } from '@fortawesome/free-solid-svg-icons';
 
-export default function Home() {
-  const vendors = [
-    { vendorName: "Pappy's Papaya", description: "Fruit smoothies", image: "pic1", popular: "Trop, Gluten Free, CoCoNutty" },
-    { vendorName: "Sal's Salami", description: "Deli counter on wheels", image: "pic2", popular: "Italian Hoagie & Chicken Parm & Philly Cheesesteak" },
-    { vendorName: "Paco's Tacos", description: "Comida a la plancha", image: "pic3", popular: "Carne Asada, Leche Flan, Eloté" },
-    { vendorName: "Soup Station", description: "Fruit smoothies", image: "pic4", popular: "Beef Barley & Chicken Noodle & Split Pea" },
-    { vendorName: "Driftin' Desserts", description: "Out of this world desserts", image: "pic5", popular: "Marshamallow Magic Brownies, , Red Velvet Cupcake" },
-    { vendorName: "Noodle Scooter", description: "Don't be shy... slurp us", image: "pic6", popular: "Ramen & Pho & Pancit & Jap Chae" },
-    { vendorName: "The Bean Machine", description: "We're good for your heart", image: "pic7", popular: "Falafel, Chili, Feijoada" }
-  ];
+// Define the vendors array inside the component
+const vendors = [
+  { vendorName: "Pappy's Papaya", location: "Upper West Side", description: "Fruit smoothies", image: "pic1", popular: "Trop, Gluten Free, CoCoNutty" },
+  { vendorName: "Sal's Salami", location: "Upper East Side", description: "Deli counter on wheels", image: "pic2", popular: "Italian Hoagie & Chicken Parm & Philly Cheesesteak" },
+  { vendorName: "Paco's Tacos", location: "Pelham Parkway", description: "Comida a la plancha", image: "pic3", popular: "Carne Asada, Leche Flan, Eloté" },
+  { vendorName: "Soup Station", location: "Williamsburg", description: "Savor our warmth", image: "pic4", popular: "Beef Barley & Chicken Noodle & Split Pea" },
+  { vendorName: "Driftin' Desserts", location: "East Village", description: "Out of this world desserts", image: "pic5", popular: "Marshamallow Magic Brownies, NY Cheesecake, Red Velvet Cupcake" },
+  { vendorName: "Noodle Scooter", location: "Chinatown", description: "Don't be shy... slurp us", image: "pic6", popular: "Ramen & Pho & Pancit & Jap Chae" },
+  { vendorName: "Bean Machine", location: "Jackson Heights", description: "We're good for your heart", image: "pic7", popular: "Falafel, Chili, Feijoada" },
+  { vendorName: "Weiner Mobile", location: "Central Park", description: "The Oscar Mayer Legend", image: "pic8", popular: "Chicago Dog, Kielbasa, Cocktail Bucket" }
+];
 
+export { vendors }; // Export the vendors array
+
+export default function Home() {
   const [startIndex, setStartIndex] = useState(0);
   const [prevClicked, setPrevClicked] = useState(false);
   const [nextClicked, setNextClicked] = useState(false);
