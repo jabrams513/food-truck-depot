@@ -1,0 +1,51 @@
+[
+  {
+    "vendorName": "Oodles of Noodles",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  },
+  {
+    "vendorName": "Oodles of Noodles 2",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  },
+  {
+    "vendorName": "Oodles of Noodles 3",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  },
+  {
+    "vendorName": "Oodles of Noodles 4",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  },
+  {
+    "vendorName": "Oodles of Noodles 5",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  },
+  {
+    "vendorName": "Oodles of Noodles 6",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  },
+  {
+    "vendorName": "Oodles of Noodles 7",
+    "description": "Ramen noodles",
+    "image": "https://i.imgur.com/0KXO5RE.png",
+    "popular": "$$$",
+    "owner": "mkanatalexander@foodtruckdepot.dev"
+  }
+]

@@ -45,11 +45,12 @@ const resolvers = {
         createFoodTruck: async (parent, {vendorName, description, image, popular}) => {
             if (context.user) {
                 const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: context.user.email});
-
-
-
-
-                const token = signToken()
+                //add the foodTruck to the user's truck array
+                const user = await User.updateOne(
+                    {email: context.user.email},
+                    {$addToSet: {trucks: foodTruck}}
+                );
+                return foodTruck;
             }
 
             throw AuthenticationError;
