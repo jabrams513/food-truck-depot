@@ -23,7 +23,7 @@ const FormContainer = styled('div')({
 
 const CenteredButton = styled(Button)({
   margin: '0 auto', // Center horizontally
-  color: 'var--(white)', // Set text color to white
+  color: 'var(--white)', // Set text color to white
   fontFamily: 'Radley, sans-serif', // Set font for the button text
 });
 

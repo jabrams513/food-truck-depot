@@ -7,6 +7,7 @@ import "./index.css";
 import SignUp from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import AddTruck from "./pages/AddTruck/AddTruck.jsx";
+import Reservations from "./pages/Reservations/Reservations.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         path: "/addTruck",
         element: <AddTruck />,
       },
+      {
+        path: "/Reservations",
+        element: <Reservations />,
+      }
     ],
   },
 ]);
