@@ -24,8 +24,8 @@ const typeDefs = `
   type Query {
     users: [User]
     user(email: String!): User
-    trucks: [FoodTruck]
-    truck(vendorName: String!): FoodTruck
+    foodTrucks: [FoodTruck]
+    foodTruck(vendorName: String!): FoodTruck
   }
 
   type Mutation {
