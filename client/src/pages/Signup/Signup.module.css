@@ -1,0 +1,130 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Fjalla One";
+  width: 40%;
+  margin: auto;
+  padding: 5% 0 5% 0;
+  margin-top: 5%;
+  text-align: center;
+  box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  background-color: #f97242;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  margin-bottom: 4%;
+  font-size: 1.5em;
+}
+
+.custom-form-control input {
+  font-size: 1.25em;
+  width: 80%;
+}
+
+.custom-form-control a {
+  color: white;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+section {
+    width: 100%;
+    max-width: 420px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+a, a:visited {
+    color: #fff;
+}
+
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: #41b643;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: black;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+}
+
+.login-btn {
+  background-color: green;
+  color: white;
+  font-family: "Fjalla One";
+  padding: 10px 30px 10px 30px;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.sign-up-btn {
+  background-color: black;
+  color: #41b643;
+  font-family: "Fjalla One";
+  padding: 10px 30px 10px 30px;
+  width: fit-content;
+  border-radius: 20px;
+}
