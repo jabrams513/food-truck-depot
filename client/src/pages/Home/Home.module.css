@@ -1,3 +1,64 @@
-.example-home {
-  color: green;
+:root {
+  --green: #41b643;
+  --orange: #F97242;
+  --white: #E6E6E6;
+}
+
+header {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+body {
+  background-color: var(--white);
+
+font-family: 'Radley', serif;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+.pageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.vendorContainer {
+  width: 80%;
+  text-align: center;
+}
+
+.vendorCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navIcon {
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.vendorList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vendorItem {
+  flex-basis: calc(33.333% - 20px); /* Adjust vendor width for 3 vendors in a row */
+  margin-bottom: 20px;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .vendorItem {
+    flex-basis: 100%; /* Full width for 1 vendor in a row on small screens */
+  }
+}
+
+.clicked {
+  color: var(--green);
 }

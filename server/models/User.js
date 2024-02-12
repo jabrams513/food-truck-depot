@@ -17,7 +17,13 @@ const userSchema = new Schema({
         type: String,
         required: true,
         trim: true
-    }
+    },
+    trucks: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'FoodTruck'
+        }
+    ]
 });
 
 userSchema.pre('save', async function (next) {
