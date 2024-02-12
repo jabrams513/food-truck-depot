@@ -14,6 +14,9 @@ const typeDefs = `
     image: String
     popular: String
     owner: String!
+    location: String
+    latitude: String
+    longitude: String
   }
 
   type Auth {
@@ -31,7 +34,7 @@ const typeDefs = `
   type Mutation {
     createUser(email: String!, password: String!, role: String!): Auth
     login(email: String!, password: String!): Auth
-    createFoodTruck(vendorName: String!, description: String, image: String, popular: String, owner: String): Auth
+    createFoodTruck(vendorName: String!, description: String, image: String, popular: String, owner: String, location: String): Auth
   }
 `;
 

@@ -26,6 +26,21 @@ const foodTruckSchema = new Schema({
         type: String,
         required: true,
         trim: true
+    },
+    location: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    latitude: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    longitude: {
+        type: String,
+        required: false,
+        trim: true
     }
 });
 
