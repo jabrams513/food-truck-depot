@@ -1,11 +1,25 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/foodtruck.png";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(isChecked);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsChecked(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleSignOut = () => {
     console.log("User Signed out");
@@ -13,15 +27,28 @@ const Navbar = () => {
     // Perform any other sign-out actions if needed
   };
 
+  const handleLinkClick = () => {
+    setIsChecked(false);
+  };
+
   return (
     <div className={styles.navbar}>
-      <div className={styles.dropdown}>
+      <div className={styles.logo}>
+        <img src={logo} alt="Logo" />
+        <p className={styles.logoText}> Food Truck Depot </p>
+      </div>
+      <div className={styles.searchBar}>
+        <input type="text" placeholder="Search..." />
+        <button type="submit" className={styles.searchButton}>Search</button>
+      </div>
+      <div className={styles.dropdown} ref={dropdownRef}>
         <div className={styles.hamburgerWrapper}>
           <div className={styles.hamburgerPositioner}>
             <input
               type="checkbox"
               id="hamburger"
               className={styles.hamburgerCheckbox}
+              checked={isChecked}
               onChange={() => {
                 setIsChecked(!isChecked);
               }}
@@ -35,25 +62,18 @@ const Navbar = () => {
         </div>
         {isChecked && (
           <div className={styles.dropdownContent}>
-            <Link to="/">Home</Link>
-            <Link to="/favorites">Favorites</Link>
-            <Link to="/reservations">Reservations</Link>
-            <Link to="/addtruck">Add Truck</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/sign-up">Sign Up</Link>
+            <Link to="/" onClick={handleLinkClick}>Home</Link>
+            <Link to="/favorites" onClick={handleLinkClick}>Favorites</Link>
+            <Link to="/map" onClick={handleLinkClick}>Map</Link>
+            <Link to="/reservations" onClick={handleLinkClick}>Reservations</Link>
+            <Link to="/addtruck" onClick={handleLinkClick}>Add Truck</Link>
+            <Link to="/login" onClick={handleLinkClick}>Login</Link>
+            <Link to="/sign-up" onClick={handleLinkClick}>Sign Up</Link>
             <a href="#" onClick={handleSignOut}>
               Sign out
             </a>
           </div>
         )}
-      </div>
-      <div className={styles.searchBar}>
-        <input type="text" placeholder="Search..." />
-        <button type="submit">Search</button>
-      </div>
-      <div className={styles.logo}>
-        <p className={styles.logoText}> Food Truck Depot </p>
-        <img src={logo} alt="Logo" />
       </div>
     </div>
   );
