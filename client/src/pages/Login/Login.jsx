@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from "./Login.module.css"; 
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -36,24 +37,24 @@ function Login() {
 
   return (
     <main>
-      <div className="login-container">
+      <div className={styles["login-container"]}> 
         <form id="login-form" onSubmit={handleSubmit}>
-          <div className="custom-form-control">
+          <div className={styles["custom-form-control"]}> 
             <label>Login</label>
           </div>
-          <div className="custom-form-control">
+          <div className={styles["custom-form-control"]}> 
             <label>Email:</label><br />
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input className={styles["custom-form-input"]} type="text" value={email} onChange={(e) => setEmail(e.target.value)} /> 
           </div>
-          <div className="custom-form-control">
+          <div className={styles["custom-form-control"]}> 
             <label>Password:</label><br />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className={styles["custom-form-input"]} type="password" value={password} onChange={(e) => setPassword(e.target.value)} /> 
           </div>
-          <div className="custom-form-control">
-            <input id="login-btn-pg" type="submit" value="Login" />
+          <div className={styles["custom-form-control"]}>
+            <input id="login-btn-pg" className={styles["login-btn"]} type="submit" value="Login" /> 
           </div>
-          <div className="custom-form-control">
-            <label><a href="/sign-up">Sign Up</a></label>
+          <div className={styles["custom-form-control"]}> 
+            <label><a href="/sign-up" className={styles["sign-up-btn"]}>Sign Up</a></label> 
           </div>
         </form>
       </div>
