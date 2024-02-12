@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { vendors } from '../Home/Home.jsx';
+import styles from "./Reservations.module.css";
 
 const FormContainer = styled('div')({
   display: 'flex',
