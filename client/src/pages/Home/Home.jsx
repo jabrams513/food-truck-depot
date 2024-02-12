@@ -1,5 +1,3 @@
-// Home.js
-
 import React, { useState } from 'react';
 import styles from "./Home.module.css";
 import Vendor from '../Vendor/Vendor.jsx';
@@ -8,14 +6,14 @@ import { faIceCream } from '@fortawesome/free-solid-svg-icons';
 
 // Define the vendors array inside the component
 const vendors = [
-  { vendorName: "Pappy's Papaya", location: "Upper West Side", description: "Fruit smoothies", image: "pic1", popular: "Trop, Gluten Free, CoCoNutty" },
-  { vendorName: "Sal's Salami", location: "Upper East Side", description: "Deli counter on wheels", image: "pic2", popular: "Italian Hoagie & Chicken Parm & Philly Cheesesteak" },
-  { vendorName: "Paco's Tacos", location: "Pelham Parkway", description: "Comida a la plancha", image: "pic3", popular: "Carne Asada, Leche Flan, Eloté" },
-  { vendorName: "Soup Station", location: "Williamsburg", description: "Savor our warmth", image: "pic4", popular: "Beef Barley & Chicken Noodle & Split Pea" },
-  { vendorName: "Driftin' Desserts", location: "East Village", description: "Out of this world desserts", image: "pic5", popular: "Marshamallow Magic Brownies, NY Cheesecake, Red Velvet Cupcake" },
-  { vendorName: "Noodle Scooter", location: "Chinatown", description: "Don't be shy... slurp us", image: "pic6", popular: "Ramen & Pho & Pancit & Jap Chae" },
-  { vendorName: "Bean Machine", location: "Jackson Heights", description: "We're good for your heart", image: "pic7", popular: "Falafel, Chili, Feijoada" },
-  { vendorName: "Weiner Mobile", location: "Central Park", description: "The Oscar Mayer Legend", image: "pic8", popular: "Chicago Dog, Kielbasa, Cocktail Bucket" }
+  { vendorName: "Pappy's Papaya", location: "Sutton Place", latitude: "40.758505", longitude: "-73.962029", description: "Fruit smoothies", image: "pic1", popular: "Trop, Gluten Free, CoCoNutty" },
+  { vendorName: "Sal's Salami", location: "Upper East Side", latitude: "34.0522", longitude: "-118.2437", description: "Deli counter on wheels", image: "pic2", popular: "Italian Hoagie & Chicken Parm & Philly Cheesesteak" },
+  { vendorName: "Paco's Tacos", location: "Pelham Parkway", latitude: "51.5074", longitude: "-0.1278", description: "Comida a la plancha", image: "pic3", popular: "Carne Asada, Leche Flan, Eloté" },
+  { vendorName: "Soup Station", location: "Williamsburg", latitude: "-22.9068", longitude: "-43.1729", description: "Savor our warmth", image: "pic4", popular: "Beef Barley & Chicken Noodle & Split Pea" },
+  { vendorName: "Driftin' Desserts", location: "East Village", latitude: "35.6895", longitude: "139.6917", description: "Out of this world desserts", image: "pic5", popular: "Marshamallow Magic Brownies, NY Cheesecake, Red Velvet Cupcake" },
+  { vendorName: "Noodle Scooter", location: "Chinatown", latitude: "40.7128", longitude: "-74.0060", description: "Don't be shy... slurp us", image: "pic6", popular: "Ramen & Pho & Pancit & Jap Chae" },
+  { vendorName: "Bean Machine", location: "Jackson Heights", latitude: "-33.8688", longitude: "151.2093", description: "We're good for your heart", image: "pic7", popular: "Falafel, Chili, Feijoada" },
+  { vendorName: "Weiner Mobile", location: "Central Park", latitude: "48.8566", longitude: "2.3522", description: "The Oscar Mayer Legend", image: "pic8", popular: "Chicago Dog, Kielbasa, Cocktail Bucket" }
 ];
 
 export { vendors }; // Export the vendors array
