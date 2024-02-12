@@ -4,21 +4,21 @@ const {signToken, AuthenticationError} = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find();
+            return User.find().populate("trucks");
         },
-        user: async (parent, {username}) => {
-            return User.findOne({username});
+        user: async (parent, {email}) => {
+            return User.findOne({email}).populate("trucks");
         },
         foodTrucks: async () => {
             return FoodTruck.find();
         },
         foodTruck: async (parent, {vendorName}) => {
             return FoodTruck.findOne({vendorName});
-        }
+        },
     },
     Mutation: {
-        createUser: async (parent, {email, password, role}) => {
-            const user = await User.create({email, password, role});
+        createUser: async (parent, {email, password}) => {
+            const user = await User.create({email, password});
             const token = signToken(user);
 
             return {token, user};
@@ -42,18 +42,20 @@ const resolvers = {
 
             return {token, user};
         },
-        createFoodTruck: async (parent, {vendorName, description, image, popular}) => {
+        createFoodTruck: async (parent, {vendorName, description, image, popular, location, latitude, longitude}) => {
             if (context.user) {
-                const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: context.user.email});
-
-
-
-
-                const token = signToken()
+                const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: context.user.email, location, latitude, longitude});
+                //add the foodTruck to the user's truck array
+                const user = await User.updateOne(
+                    {email: context.user.email},
+                    {$addToSet: {trucks: foodTruck}}
+                );
+                return foodTruck;
             }
 
             throw AuthenticationError;
-        }
+        },
+
     }
 };
 
