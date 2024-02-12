@@ -14,6 +14,8 @@ export const QUERY_USER = gql`query Query($email: String!) {
       popular
       owner
       location
+      latitude
+      longitude
     }
   }
 }
@@ -33,6 +35,8 @@ export const QUERY_USERS = gql`query Users {
       popular
       owner
       location
+      latitude
+      longitude
     }
   }
 }`
@@ -46,6 +50,8 @@ export const QUERY_FOOD_TRUCKS = gql`query FoodTrucks {
     popular
     owner
     location
+    latitude
+    longitude
   }
 }`;
 
@@ -58,5 +64,7 @@ export const QUERY_FOOD_TRUCK_BY_NAME = gql`query FoodTrucks($vendorName: String
     popular
     owner
     location
+    latitude
+    longitude
   }
 }`
