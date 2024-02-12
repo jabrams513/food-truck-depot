@@ -8,6 +8,7 @@ import SignUp from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import AddTruck from "./pages/AddTruck/AddTruck.jsx";
 import Reservations from "./pages/Reservations/Reservations.jsx";
+import Map from "./pages/Map/Map.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/Reservations",
         element: <Reservations />,
+      },
+      {
+        path: "/Map",
+        element: <Map />,
       }
     ],
   },
