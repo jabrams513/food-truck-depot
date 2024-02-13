@@ -13,9 +13,11 @@ import { useQuery } from "@apollo/client";
 import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
 import { QUERY_CATEGORIES } from "../../utils/queries.js";
 
+
 // Define the vendors array inside the component
 const vendors = [
   {
+    id: 1,
     vendorName: "Pappy's Papaya",
     location: "Sutton Place",
     latitude: "40.758505",
@@ -25,6 +27,7 @@ const vendors = [
     popular: "Trop, Gluten Free, CoCoNutty",
   },
   {
+    id: 2,
     vendorName: "Sal's Salami",
     location: "Upper East Side",
     latitude: "34.0522",
@@ -33,7 +36,8 @@ const vendors = [
     image: "pic2",
     popular: "Italian Hoagie & Chicken Parm & Philly Cheesesteak",
   },
-  {
+  { 
+    id: 3,
     vendorName: "Paco's Tacos",
     location: "Pelham Parkway",
     latitude: "51.5074",
@@ -42,7 +46,8 @@ const vendors = [
     image: "pic3",
     popular: "Carne Asada, Leche Flan, Eloté",
   },
-  {
+  { 
+    id: 4,
     vendorName: "Soup Station",
     location: "Williamsburg",
     latitude: "-22.9068",
@@ -52,6 +57,7 @@ const vendors = [
     popular: "Beef Barley & Chicken Noodle & Split Pea",
   },
   {
+    id: 5,
     vendorName: "Driftin' Desserts",
     location: "East Village",
     latitude: "35.6895",
@@ -61,6 +67,7 @@ const vendors = [
     popular: "Marshmallow Magic Brownies, NY Cheesecake, Milkshakes",
   },
   {
+    id: 6,
     vendorName: "Noodle Scooter",
     location: "Chinatown",
     latitude: "40.7128",
@@ -70,6 +77,7 @@ const vendors = [
     popular: "Ramen & Pho & Pancit & Jap Chae",
   },
   {
+    id: 7,
     vendorName: "Bean Machine",
     location: "Jackson Heights",
     latitude: "-33.8688",
@@ -79,6 +87,7 @@ const vendors = [
     popular: "Falafel, Chili, Feijoada",
   },
   {
+    id: 8,
     vendorName: "Weiner Mobile",
     location: "Central Park",
     latitude: "48.8566",
