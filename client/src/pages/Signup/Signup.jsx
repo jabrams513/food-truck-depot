@@ -8,8 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../../axios";
 import styles from "./Signup.module.css";
 import { Link } from "react-router-dom";
+import { SIGN_UP_USER } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+import Auth from "../../utils/auth";
 
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const EMAIL_REGEX = /.+@.+\..+/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const SIGNUP_URL = "/sign-up";
 
@@ -31,6 +34,8 @@ const SignUp = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const [signup, { error }] = useMutation(SIGN_UP_USER);
 
   useEffect(() => {
     emailRef.current.focus();
@@ -55,6 +60,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("CALLING SIGN UP");
     const v1 = EMAIL_REGEX.test(email);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
@@ -62,30 +68,24 @@ const SignUp = () => {
       return;
     }
     try {
-      const response = await axios.post(
-        SIGNUP_URL,
-        JSON.stringify({ email, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
+      console.log("VALID EMAIL AND PASSWORD");
+      console.log(email);
+      console.log(pwd);
+      let { data } = await signup({
+        variables: {
+          email: email,
+          password: pwd,
+        },
+      });
+      console.log("LOGGING DATA");
+      console.log(data);
+      Auth.login(data.createUser.token);
       setSuccess(true);
       setEmail("");
       setPwd("");
       setMatchPwd("");
     } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Email Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
-      errRef.current.focus();
+      console.log(err);
     }
   };
 

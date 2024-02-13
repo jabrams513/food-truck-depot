@@ -18,31 +18,37 @@ const resolvers = {
     },
     Mutation: {
         createUser: async (parent, {email, password}) => {
+            console.log("IN CREATE USER RESOLVER");
             const user = await User.create({email, password});
-            const token = signToken(user);
+            console.log("LOGGING NEW USER");
+            console.log(user)
+            const token = signToken({email: user.email, _id: user._id});
 
             return {token, user};
         },
         login: async (parent, {email, password}) => {
+            console.log("IN LOGGED IN RESOLVER");
             const user = await User.findOne({email});
-
+            console.log("LOGGING FOUND USER");
+            console.log(user);
             if (!user) {
                 console.log("DIDNT FIND USER");
                 throw AuthenticationError;
             }
 
             const correctPW = await user.isCorrectPassword(password);
-
+            console.log("IS THE PASSWORD RIGHT?");
+            console.log(correctPW);
             if (!correctPW) {
                 console.log("INCORRECT PASSWorD");
                 throw AuthenticationError;
             }
 
             const token = signToken(user);
-
+            console.log(token);
             return {token, user};
         },
-        createFoodTruck: async (parent, {vendorName, description, image, popular, location, latitude, longitude}) => {
+        createFoodTruck: async (parent, {vendorName, description, image, popular, owner, location, latitude, longitude}, context) => {
             if (context.user) {
                 const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: context.user.email, location, latitude, longitude});
                 //add the foodTruck to the user's truck array
@@ -50,11 +56,27 @@ const resolvers = {
                     {email: context.user.email},
                     {$addToSet: {trucks: foodTruck}}
                 );
-                return foodTruck;
+                const token = signToken(user);
+                return {token, user};
+            }
+            else if (owner) {
+                const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: owner, location, latitude, longitude});
+                //add the foodTruck to the user's truck array
+                const user = await User.updateOne(
+                    {email: owner},
+                    {$addToSet: {trucks: foodTruck}}
+                );
+                const token = signToken(user);
+                return {token, user};
             }
 
             throw AuthenticationError;
         },
+
+        removeFoodTruck: async (parent, {foodTruckId}) => {
+            return FoodTruck.findOneAndDelete({_id: foodTruckId});
+        },
+
 
     }
 };
