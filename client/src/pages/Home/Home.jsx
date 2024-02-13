@@ -55,7 +55,7 @@ const vendors = [
     longitude: "139.6917",
     description: "Out of this world desserts",
     image: "pic5",
-    popular: "Marshamallow Magic Brownies, NY Cheesecake, Red Velvet Cupcake",
+    popular: "Marshmallow Magic Brownies, NY Cheesecake, Milkshakes",
   },
   {
     vendorName: "Noodle Scooter",
