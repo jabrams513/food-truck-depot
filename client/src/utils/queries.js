@@ -67,4 +67,16 @@ export const QUERY_FOOD_TRUCK_BY_NAME = gql`query FoodTrucks($vendorName: String
     latitude
     longitude
   }
+}`;
+
+export const QUERY_CATEGORIES = gql`query Query {
+  categories {
+    _id
+    name
+    image
+    description
+    trucks {
+      _id
+    }
+  }
 }`

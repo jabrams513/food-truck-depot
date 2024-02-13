@@ -6,6 +6,14 @@ const typeDefs = `
     trucks: [FoodTruck]
   }
 
+  type Category {
+    _id: ID
+    name: String!
+    image: String
+    description: String
+    trucks: [FoodTruck]
+  }
+
   type FoodTruck {
     _id: ID
     vendorName: String!
@@ -16,7 +24,9 @@ const typeDefs = `
     location: String
     latitude: String
     longitude: String
+    category: String
   }
+
 
   type Auth {
     token: ID!
@@ -28,6 +38,8 @@ const typeDefs = `
     user(email: String!): User
     foodTrucks: [FoodTruck]
     foodTruck(vendorName: String!): FoodTruck
+    categories: [Category]
+    category(name: String!): Category
   }
 
   type Mutation {

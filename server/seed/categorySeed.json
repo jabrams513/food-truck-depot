@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Italian",
+    "image": "https://i.imgur.com/JCnEVGJ.png",
+    "description": "The food of Italy!"
+  },
+  {
+    "name": "Mexican",
+    "image": "https://i.imgur.com/N2gUzVl.png",
+    "description": "The food of Mexico!"
+  },
+  {
+    "name": "American",
+    "image": "https://i.imgur.com/zUT9iwT.png",
+    "description": "The food of America!"
+  },
+  {
+    "name": "Mediterrian",
+    "image": "https://i.imgur.com/1McvtCc.png",
+    "description": "The food of Mediterrian!"
+  },
+  {
+    "name": "Asian",
+    "image": "https://i.imgur.com/lz1UIh5.png",
+    "description": "The food of Asia!"
+  }
+]
