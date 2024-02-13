@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/foodtruck.png";
 import { useState, useEffect, useRef } from "react";
-
+import Auth from "../../utils/auth";
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
   const dropdownRef = useRef(null);
@@ -23,8 +23,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     console.log("User Signed out");
-    localStorage.removeItem("accessToken");
-    // Perform any other sign-out actions if needed
+    Auth.logout();
   };
 
   const handleLinkClick = () => {
@@ -39,7 +38,9 @@ const Navbar = () => {
       </div>
       <div className={styles.searchBar}>
         <input type="text" placeholder="Search..." />
-        <button type="submit" className={styles.searchButton}>Search</button>
+        <button type="submit" className={styles.searchButton}>
+          Search
+        </button>
       </div>
       <div className={styles.dropdown} ref={dropdownRef}>
         <div className={styles.hamburgerWrapper}>
@@ -62,16 +63,36 @@ const Navbar = () => {
         </div>
         {isChecked && (
           <div className={styles.dropdownContent}>
-            <Link to="/" onClick={handleLinkClick}>Home</Link>
-            <Link to="/favorites" onClick={handleLinkClick}>Favorites</Link>
-            <Link to="/map" onClick={handleLinkClick}>Map</Link>
-            <Link to="/reservations" onClick={handleLinkClick}>Reservations</Link>
-            <Link to="/addtruck" onClick={handleLinkClick}>Add Truck</Link>
-            <Link to="/login" onClick={handleLinkClick}>Login</Link>
-            <Link to="/sign-up" onClick={handleLinkClick}>Sign Up</Link>
-            <a href="#" onClick={handleSignOut}>
-              Sign out
-            </a>
+            <Link to="/" onClick={handleLinkClick}>
+              Home
+            </Link>
+            <Link to="/favorites" onClick={handleLinkClick}>
+              Favorites
+            </Link>
+            <Link to="/map" onClick={handleLinkClick}>
+              Map
+            </Link>
+            <Link to="/reservations" onClick={handleLinkClick}>
+              Reservations
+            </Link>
+            <Link to="/addtruck" onClick={handleLinkClick}>
+              Add Truck
+            </Link>
+            {!Auth.loggedIn() ? (
+              <>
+                {" "}
+                <Link to="/login" onClick={handleLinkClick}>
+                  Login
+                </Link>
+                <Link to="/sign-up" onClick={handleLinkClick}>
+                  Sign Up
+                </Link>
+              </>
+            ) : (
+              <a href="#" onClick={handleSignOut}>
+                Sign out
+              </a>
+            )}
           </div>
         )}
       </div>

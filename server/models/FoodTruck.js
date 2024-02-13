@@ -41,6 +41,11 @@ const foodTruckSchema = new Schema({
         type: String,
         required: false,
         trim: true
+    },
+    category: {
+        type: String,
+        required: true,
+        trim: true
     }
 });
 

@@ -1,4 +1,4 @@
-const {User, FoodTruck} = require('../models');
+const {User, FoodTruck, Category} = require('../models');
 const {signToken, AuthenticationError} = require('../utils/auth');
 
 const resolvers = {
@@ -15,6 +15,12 @@ const resolvers = {
         foodTruck: async (parent, {vendorName}) => {
             return FoodTruck.findOne({vendorName});
         },
+        categories: async () => {
+            return Category.find();
+        },
+        category: async (parent, {name}) => {
+            return Category.findOne({name});
+        }
     },
     Mutation: {
         createUser: async (parent, {email, password}) => {
