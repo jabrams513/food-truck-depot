@@ -123,7 +123,7 @@ const SignUp = () => {
               />
             </label>
             <input
-              type="text"
+              type="email"
               id="userEmail"
               ref={emailRef}
               autoComplete="off"
