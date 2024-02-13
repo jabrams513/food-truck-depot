@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from "./AddTruck.module.css";
 
 const FormContainer = styled('div')({
@@ -67,6 +69,7 @@ export default function AddTruck() {
     // Process form submission (e.g., send data to backend)
     console.log('Form submitted:', { vendorName, location, description, image, popular });
     // Show success message
+    fetch('https://geocode.maps.co/search?q=' + location + '&api_key=65cb9a5c9e08d081794555nar4b92f8').then((response) => response.json()).then((data) => console.log(data));
     setSuccessMessage('Form submitted successfully!');
     // Reset form fields
     setVendorName('');
@@ -100,6 +103,7 @@ export default function AddTruck() {
           fullWidth
           margin="normal"
         />
+        <p>↓↓↓ Format: 123 Main St, New York, NY 10022 ↓↓↓</p>
         <GreenTextField
           label="Location"
           variant="outlined"
