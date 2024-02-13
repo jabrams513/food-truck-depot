@@ -3,7 +3,6 @@ const typeDefs = `
     _id: ID
     email: String
     password: String
-    role: String
     trucks: [FoodTruck]
   }
 
@@ -32,9 +31,10 @@ const typeDefs = `
   }
 
   type Mutation {
-    createUser(email: String!, password: String!, role: String!): Auth
+    createUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     createFoodTruck(vendorName: String!, description: String, image: String, popular: String, owner: String, location: String): Auth
+    removeFoodTruck(foodTruckId: ID!): FoodTruck
   }
 `;
 
