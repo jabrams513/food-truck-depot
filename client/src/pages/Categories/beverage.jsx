@@ -3,7 +3,7 @@ import Category from './category';
 import dessert from "../../assets/vendor5.png";
 import papaya from "../../assets/vendor1.png";
 
-const Desserts = () => {
+const Beverage = () => {
   return (
     <div className="cuisine">
       <Category
@@ -20,4 +20,4 @@ const Desserts = () => {
   );
 };
 
-export default Desserts;
+export default Beverage;

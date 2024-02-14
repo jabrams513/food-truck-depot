@@ -10,10 +10,11 @@ import AddTruck from "./pages/AddTruck/AddTruck.jsx";
 import Reservations from "./pages/Reservations/Reservations.jsx";
 import Map from "./pages/Map/Map.jsx";
 import Italian from "./pages/Categories/italian.jsx";
-import Latin from "./pages/Categories/latin.jsx";
+import Mexican from "./pages/Categories/Mexican.jsx";
 import Asian from "./pages/Categories/asian.jsx";
 import Healthy from "./pages/Categories/healthy.jsx";
-import Beverages from "./pages/Categories/beverages.jsx";
+import Mediterranean from "./pages/Categories/Mediterranean.jsx";
+import Beverage from "./pages/Categories/beverage.jsx";
 import American from "./pages/Categories/american.jsx";
 import FoodTruckPage from "./pages/FoodTrucks/FoodTruckTemplate.jsx";
 
@@ -63,12 +64,16 @@ const router = createBrowserRouter([
         element: <Healthy />,
       },
       {
-        path: "/latin",
-        element: <Latin />,
+        path: "/Mexican",
+        element: <Mexican />,
       },
       {
-        path: "/beverages",
-        element: <Beverages />,
+        path: "/beverage",
+        element: <Beverage />,
+      },
+      {
+        path: "/Mediterranean",
+        element: <Mediterranean />,
       },
       {
         path: "/food-truck/:truckId",

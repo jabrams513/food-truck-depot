@@ -3,10 +3,12 @@
   grid-template-columns: repeat(2, auto);
   grid-gap: 20px;
   padding: 20px; 
+  text-align: center;
+  color: #41b643;
 }
 
 .card {
-  width: 100%; 
+  width: 40vw; 
   border: 1px solid #ccc;
   background-color: white;
   border-radius: 8px;
