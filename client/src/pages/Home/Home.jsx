@@ -183,7 +183,8 @@ export default function Home() {
                 )
                 .map((vendor, index) => (
                   <div className={styles.vendorItem} key={vendor._id}>
-                    <Vendor vendor={vendor} />
+                    <a className={styles.foodtrucklink} href={`/food-truck/${vendor._id}`}> <Vendor vendor={vendor} />
+                    </a>
                   </div>
                 ))}
             </div>

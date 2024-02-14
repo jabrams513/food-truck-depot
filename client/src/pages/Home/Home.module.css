@@ -55,6 +55,9 @@ h2 {
   flex-basis: calc(33.333% - 20px); /* Adjust vendor width for 3 vendors in a row */
   margin-bottom: 20px;
 }
+.foodtrucklink {
+  text-decoration: none;
+}
 
 /* Media query for small screens */
 @media (max-width: 768px) {
