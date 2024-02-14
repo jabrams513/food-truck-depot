@@ -121,8 +121,8 @@ export default function AddTruck() {
           popular: popular,
           location: location,
           owner: Auth.getProfile().data.email,
-          latitude: latitude,
-          longitude: longitude,
+          latitude: addressLat,
+          longitude: addressLon,
           category: categoryType,
         },
       });
