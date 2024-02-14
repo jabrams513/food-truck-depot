@@ -16,7 +16,6 @@ import Healthy from "./pages/Categories/healthy.jsx";
 import Beverages from "./pages/Categories/beverages.jsx";
 import American from "./pages/Categories/american.jsx";
 import FoodTruckPage from "./pages/FoodTrucks/FoodTruckTemplate.jsx";
-import { vendors } from "./pages/Home/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -73,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/food-truck/:truckId",
-        element: <FoodTruckPage vendors={vendors} />, 
+        element: <FoodTruckPage />, 
       },
       
     ],

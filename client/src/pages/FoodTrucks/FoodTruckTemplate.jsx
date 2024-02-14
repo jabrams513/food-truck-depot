@@ -1,25 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { Link, useParams } from "react-router-dom";
 import styles from "./FoodTruckPage.module.css";
-import { vendors } from "../Home/Home.jsx"; 
+import { QUERY_FOOD_TRUCK_BY_ID } from "../../utils/queries.js"; 
 
-const FoodTruckPage = ({ vendors, truckId }) => { 
-  const findTruckById = (id) => {
-    return vendors.find((truck) => truck.id === id); 
-  };
+const FoodTruckPage = () => {
+  let { truckId } = useParams();
+  console.log(truckId)
+  const { loading, error, data } = useQuery(QUERY_FOOD_TRUCK_BY_ID, {
+    variables: { truckId },
+  });
 
-  const truckData = findTruckById(truckId);
+  console.log(data)
 
-  if (!truckData) {
-    return <div>Truck not found</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  // if (!data || !data.foodTruck) return <div>Truck not found</div>;
+
+  const {
+    vendorName,
+    description,
+    image,
+    popular,
+    owner,
+    location,
+    latitude,
+    longitude,
+    category
+  } = data.foodTruckById;
+
+
 
   return (
     <div>
       <h1>Food Truck Page</h1>
       <div className={styles.vendorList}>
         <div className={styles.vendorItem}>
-          <FoodTruckTemplate truck={truckData} />
+          <img src={image} alt={vendorName} className={styles.truckImage} />
+          <h2>{vendorName}</h2>
+          <p>Description: {description}</p>
+          <p>Popular: {popular}</p>
+          <p>Owner: {owner}</p>
+          <p>Location: {location}</p>
+          <p>Latitude: {latitude}</p>
+          <p>Longitude: {longitude}</p>
+          <p>Category: {category}</p>
           <Link to="/reservations">Book Us</Link>
         </div>
       </div>
