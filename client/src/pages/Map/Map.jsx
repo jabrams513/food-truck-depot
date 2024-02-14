@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./Map.module.css";
-import { vendors } from "../Home/Home.jsx";
 import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
 import { useQuery } from "@apollo/client";
 mapboxgl.accessToken = REACT_APP_MAP_BOX_API;
