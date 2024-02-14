@@ -12,7 +12,7 @@ import tacotruck from "../../assets/tacotruck.png";
 import { useQuery } from "@apollo/client";
 import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
 import { QUERY_CATEGORIES } from "../../utils/queries.js";
-import { Link } from 'react-router-dom'; 
+import { Link } from "react-router-dom";
 
 // Define the vendors array inside the component
 const vendors = [
@@ -36,7 +36,7 @@ const vendors = [
     image: "pic2",
     popular: "Italian Hoagie & Chicken Parm & Philly Cheesesteak",
   },
-  { 
+  {
     id: 3,
     vendorName: "Paco's Tacos",
     location: "Pelham Parkway",
@@ -46,7 +46,7 @@ const vendors = [
     image: "pic3",
     popular: "Carne Asada, Leche Flan, Eloté",
   },
-  { 
+  {
     id: 4,
     vendorName: "Soup Station",
     location: "Williamsburg",
@@ -135,7 +135,7 @@ export default function Home() {
   console.log(categoryData.data?.categories);
   const categoryList = categoryData.data?.categories || [];
   const vendorList = data?.foodTrucks || [];
-  
+
   const nextVendors = () => {
     setStartIndex((prevIndex) =>
       prevIndex + (window.innerWidth < 768 ? 1 : 3) >= vendorList.length
@@ -183,8 +183,7 @@ export default function Home() {
                 )
                 .map((vendor, index) => (
                   <div className={styles.vendorItem} key={vendor._id}>
-                    <a className={styles.foodtrucklink} href={`/food-truck/${vendor._id}`}> <Vendor vendor={vendor} />
-                    </a>
+                    <Vendor vendor={vendor} />
                   </div>
                 ))}
             </div>

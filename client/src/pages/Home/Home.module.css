@@ -1,17 +1,17 @@
 :root {
   --green: #41b643;
-  --orange: #F97242;
-  --white: #E6E6E6;
+  --orange: #f97242;
+  --white: #e6e6e6;
 }
 
 header {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: "Fjalla One", sans-serif;
 }
 
 body {
   background-color: var(--white);
 
-font-family: 'Radley', serif;
+  font-family: "Radley", serif;
 }
 
 h1,
@@ -52,11 +52,10 @@ h2 {
 }
 
 .vendorItem {
-  flex-basis: calc(33.333% - 20px); /* Adjust vendor width for 3 vendors in a row */
+  flex-basis: calc(
+    33.333% - 20px
+  ); /* Adjust vendor width for 3 vendors in a row */
   margin-bottom: 20px;
-}
-.foodtrucklink {
-  text-decoration: none;
 }
 
 /* Media query for small screens */
@@ -65,7 +64,7 @@ h2 {
     flex-basis: 100%; /* Full width for 1 vendor in a row on small screens */
   }
   .categoriesContainer {
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

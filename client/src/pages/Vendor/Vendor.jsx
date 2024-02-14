@@ -63,28 +63,30 @@ export default function Vendor({ vendor }) {
   return (
     <CardsContainer>
       <CustomCard sx={{ maxWidth: 345 }}>
-        <CardHeader
-          action={<IconButton aria-label="settings"></IconButton>}
-          title={vendorName}
-        />
-        <LocationTypography
-          variant="body2"
-          color="text.secondary"
-          align="center"
-        >
-          {location}
-        </LocationTypography>
-        <CardMedia
-          component="img"
-          height="194"
-          image={vendor.image}
-          alt={popular}
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
+        <a className={styles.foodtrucklink} href={`/food-truck/${vendor._id}`}>
+          <CardHeader
+            action={<IconButton aria-label="settings"></IconButton>}
+            title={vendorName}
+          />
+          <LocationTypography
+            variant="body2"
+            color="text.secondary"
+            align="center"
+          >
+            {location}
+          </LocationTypography>
+          <CardMedia
+            component="img"
+            height="194"
+            image={vendor.image}
+            alt={popular}
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+          </CardContent>
+        </a>
         <CardActions disableSpacing>
           <IconButton aria-label="favorite" onClick={handleFavoriteClick}>
             <FavoriteIcon
