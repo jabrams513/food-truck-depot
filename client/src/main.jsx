@@ -65,7 +65,7 @@ const router = createBrowserRouter([
       {
         path: "/latin",
         element: <Latin />,
-      }, 
+      },
       {
         path: "/beverages",
         element: <Beverages />,
@@ -74,7 +74,6 @@ const router = createBrowserRouter([
         path: "/food-truck/:truckId",
         element: <FoodTruckPage />, 
       },
-      
     ],
   },
 ]);
