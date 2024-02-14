@@ -3,7 +3,7 @@ import Category from './category';
 import tacos from "../../assets/vendor3.png";
 import bean from "../../assets/vendor7.png";
 
-const Latin = () => {
+const Mexican = () => {
   return (
     <div className="cuisine">
       <Category
@@ -20,4 +20,4 @@ const Latin = () => {
   );
 };
 
-export default Latin;
+export default Mexican;
