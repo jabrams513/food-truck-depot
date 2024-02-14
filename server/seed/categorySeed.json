@@ -1,27 +1,37 @@
 [
   {
     "name": "Italian",
-    "image": "https://i.imgur.com/JCnEVGJ.png",
+    "image": "https://imgur.com/o86zHCD.png",
     "description": "The food of Italy!"
   },
   {
     "name": "Mexican",
-    "image": "https://i.imgur.com/N2gUzVl.png",
+    "image": "https://imgur.com/WByp58Z.png",
     "description": "The food of Mexico!"
   },
   {
     "name": "American",
-    "image": "https://i.imgur.com/zUT9iwT.png",
+    "image": "https://imgur.com/pAo8iiA.png",
     "description": "The food of America!"
   },
   {
-    "name": "Mediterrian",
-    "image": "https://i.imgur.com/1McvtCc.png",
-    "description": "The food of Mediterrian!"
+    "name": "Mediterranean",
+    "image": "https://imgur.com/vJVQSmJ.png",
+    "description": "The food of Mediterranean!"
   },
   {
     "name": "Asian",
-    "image": "https://i.imgur.com/lz1UIh5.png",
+    "image": "https://imgur.com/LICaifK.png",
     "description": "The food of Asia!"
+  },
+  {
+    "name": "Healthy",
+    "image": "https://imgur.com/rWMKine.png",
+    "description": "The food of health!"
+  },
+  {
+    "name": "Beverage",
+    "image": "https://imgur.com/znYagCb.png",
+    "description": "The food of liquid!"
   }
 ]
