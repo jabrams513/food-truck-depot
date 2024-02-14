@@ -3,13 +3,18 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./Map.module.css";
 import { vendors } from "../Home/Home.jsx";
-
+import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
+import { useQuery } from "@apollo/client";
 mapboxgl.accessToken = REACT_APP_MAP_BOX_API;
 /* ("pk.eyJ1IjoiamFicmFtczUxMyIsImEiOiJjbHNpNGhoenoyNHM0MmpzNG50ZGw4eWF0In0.QtyIw-zXHg6o5pDjLHBZvA");
  */
 const Map = () => {
   const mapContainer = useRef(null);
   const markers = useRef({});
+  const { loading, data } = useQuery(QUERY_FOOD_TRUCKS);
+  const vendorList = data?.foodTrucks || [];
+
+  console.log(vendorList);
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -18,39 +23,40 @@ const Map = () => {
       center: [-74.006, 40.7128], // NYC coordinates (longitude, latitude)
       zoom: 10, // Default zoom level (slightly zoomed out)
     });
+    if (vendorList.length > 0) {
+      map.on("load", () => {
+        // Add markers for each vendor
+        vendorList.forEach((vendor) => {
+          console.log(vendor);
+          const el = document.createElement("div");
+          el.className = styles.marker;
 
-    map.on("load", () => {
-      // Add markers for each vendor
-      vendors.forEach((vendor) => {
-        const el = document.createElement("div");
-        el.className = styles.marker;
+          const label = document.createElement("div");
+          label.className = styles.label;
+          label.textContent = vendor.vendorName;
+          el.appendChild(label);
 
-        const label = document.createElement("div");
-        label.className = styles.label;
-        label.textContent = vendor.vendorName;
-        el.appendChild(label);
+          const marker = new mapboxgl.Marker(el)
+            .setLngLat([vendor.longitude, vendor.latitude])
+            .addTo(map);
 
-        const marker = new mapboxgl.Marker(el)
-          .setLngLat([vendor.longitude, vendor.latitude])
-          .addTo(map);
-
-        // Store marker reference
-        markers.current[vendor.vendorName] = marker;
+          // Store marker reference
+          markers.current[vendor.vendorName] = marker;
+        });
       });
-    });
 
-    map.on("move", () => {
-      // Update marker positions when the map moves
-      Object.entries(markers.current).forEach(([vendorName, marker]) => {
-        const vendor = vendors.find(
-          (vendor) => vendor.vendorName === vendorName
-        );
-        if (vendor) {
-          marker.setLngLat([vendor.longitude, vendor.latitude]);
-        }
+      map.on("move", () => {
+        // Update marker positions when the map moves
+        Object.entries(markers.current).forEach(([vendorName, marker]) => {
+          const vendor = vendors.find(
+            (vendor) => vendor.vendorName === vendorName
+          );
+          if (vendor) {
+            marker.setLngLat([vendor.longitude, vendor.latitude]);
+          }
+        });
       });
-    });
-
+    }
     // Cleanup
     return () => map.remove();
   }, []);
