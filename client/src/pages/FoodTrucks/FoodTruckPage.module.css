@@ -1,0 +1,10 @@
+.vendorList {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  margin-left: 10px;
+  margin-right: 10px;
+}

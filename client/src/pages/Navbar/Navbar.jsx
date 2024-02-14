@@ -34,7 +34,7 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.logo}>
         <img src={logo} alt="Logo" />
-        <p className={styles.logoText}> Food Truck Depot </p>
+        <p className={styles.logoText}> Food Truck Depot </p> 
       </div>
       <div className={styles.searchBar}>
         <input type="text" placeholder="Search..." />
