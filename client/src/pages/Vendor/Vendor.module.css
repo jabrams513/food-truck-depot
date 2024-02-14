@@ -1,5 +1,8 @@
 :root {
-    --green: #41b643;
-    --orange: #F97242;
-    --white: #E6E6E6;
-  }
+  --green: #41b643;
+  --orange: #f97242;
+  --white: #e6e6e6;
+}
+.foodtrucklink {
+  text-decoration: none;
+}
