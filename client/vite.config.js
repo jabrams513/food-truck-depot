@@ -15,7 +15,6 @@ export default defineConfig(({command, mode}) => {
           changeOrigin: true,
           secure: false,
         },
-
       }
     },
     define: {

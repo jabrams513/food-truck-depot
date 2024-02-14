@@ -20,6 +20,17 @@ const resolvers = {
         },
         category: async (parent, {name}) => {
             return Category.findOne({name});
+        },
+        foodTruckById: async (parent, {truckId}) => {
+            console.log("test")
+            try{
+                console.log(truckId)
+                let truck = FoodTruck.findOne({_id:truckId})
+                console.log(truck.vendorName)
+                return truck;
+            }catch(err){
+                console.log(err)
+            }
         }
     },
     Mutation: {

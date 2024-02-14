@@ -12,7 +12,7 @@ import tacotruck from "../../assets/tacotruck.png";
 import { useQuery } from "@apollo/client";
 import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
 import { QUERY_CATEGORIES } from "../../utils/queries.js";
-
+import { Link } from 'react-router-dom'; 
 
 // Define the vendors array inside the component
 const vendors = [
@@ -135,6 +135,7 @@ export default function Home() {
   console.log(categoryData.data?.categories);
   const categoryList = categoryData.data?.categories || [];
   const vendorList = data?.foodTrucks || [];
+  
   const nextVendors = () => {
     setStartIndex((prevIndex) =>
       prevIndex + (window.innerWidth < 768 ? 1 : 3) >= vendorList.length
@@ -203,8 +204,8 @@ export default function Home() {
           <>
             <div className={styles.categoriesContainer}>
               {categoryList.map((category, index) => (
-                <a
-                  href={category.link}
+                <Link
+                  to={category.name}
                   key={`category-${index}`}
                   className={styles.categoryLink}
                 >
@@ -219,7 +220,7 @@ export default function Home() {
                     />
                     <h2 className={styles.categoryName}>{category.name}</h2>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </>

@@ -80,3 +80,18 @@ export const QUERY_CATEGORIES = gql`query Query {
     }
   }
 }`
+
+export const QUERY_FOOD_TRUCK_BY_ID = gql`query FoodTruckById($truckId: ID) {
+  foodTruckById(truckId: $truckId) {
+    _id
+    vendorName
+    description
+    image
+    popular
+    owner
+    location
+    latitude
+    longitude
+    category
+  }
+}`;

@@ -38,6 +38,7 @@ const typeDefs = `
     user(email: String!): User
     foodTrucks: [FoodTruck]
     foodTruck(vendorName: String!): FoodTruck
+    foodTruckById(truckId: ID): FoodTruck 
     categories: [Category]
     category(name: String!): Category
   }

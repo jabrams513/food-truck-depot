@@ -32,6 +32,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
+
       <a className={styles["logo-link"]} href="/">
         <div className={styles.logo}>
           <img src={logo} alt="Logo" />
