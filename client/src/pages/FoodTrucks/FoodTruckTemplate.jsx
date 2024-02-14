@@ -33,7 +33,7 @@ const FoodTruckPage = () => {
 
   return (
     <div>
-      <h1>Food Truck Page</h1>
+      <h1 className={styles.foodTruckTitle}>Food Truck Page</h1>
       <div className={styles.vendorList}>
         <div className={styles.vendorItem}>
           <img src={image} alt={vendorName} className={styles.truckImage} />
