@@ -1,69 +1,73 @@
-import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { vendors } from '../Home/Home.jsx';
+import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 import styles from "./Reservations.module.css";
-
-const FormContainer = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
-  fontFamily: 'Radley, sans-serif',
-  '& form': {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+import { useQuery } from "@apollo/client";
+import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
+const FormContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "20px",
+  fontFamily: "Radley, sans-serif",
+  "& form": {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
-  '& .MuiButton-root': {
-    marginTop: '20px',
+  "& .MuiButton-root": {
+    marginTop: "20px",
   },
 });
 
 const GreenTextField = styled(TextField)({
-  '& .MuiInputLabel-root': {
-    color: 'var(--green)',
-    fontFamily: 'Radley, sans-serif',
+  "& .MuiInputLabel-root": {
+    color: "var(--green)",
+    fontFamily: "Radley, sans-serif",
   },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: 'var(--green)',
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "var(--green)",
   },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'var(--green)',
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "var(--green)",
     },
-    '&:hover fieldset': {
-      borderColor: 'var(--green)',
+    "&:hover fieldset": {
+      borderColor: "var(--green)",
     },
-    '&.Mui-focused fieldset': {
-      borderColor: 'var(--green)',
+    "&.Mui-focused fieldset": {
+      borderColor: "var(--green)",
     },
   },
-  '& .MuiInputBase-root': {
-    fontFamily: 'Radley, sans-serif',
+  "& .MuiInputBase-root": {
+    fontFamily: "Radley, sans-serif",
   },
 });
 
 export default function FoodTruckReservation() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [filteredVendors, setFilteredVendors] = useState([]);
-  const [date, setDate] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [eventType, setEventType] = useState('');
-  const [numGuests, setNumGuests] = useState('');
-  const [comments, setComments] = useState('');
-  const [serviceAddress, setServiceAddress] = useState('');
+  const [date, setDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [eventType, setEventType] = useState("");
+  const [numGuests, setNumGuests] = useState("");
+  const [comments, setComments] = useState("");
+  const [serviceAddress, setServiceAddress] = useState("");
   const [isReserved, setIsReserved] = useState(false);
   const [isRequiredChecked, setIsRequiredChecked] = useState(false);
+  const [enteredVendor, setSelectedVendor] = useState("");
+  const { loading, data } = useQuery(QUERY_FOOD_TRUCKS);
+
+  const vendorList = data?.foodTrucks || [];
 
   const handleSearch = (event) => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
-    const filtered = vendors.filter(vendor =>
+    const filtered = vendorList.filter((vendor) =>
       vendor.vendorName.toLowerCase().includes(query)
     );
     setFilteredVendors(filtered);
@@ -75,34 +79,55 @@ export default function FoodTruckReservation() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Check if a vendor is selected
-    if (!filteredVendors.some(vendor => vendor.vendorName.toLowerCase() === searchQuery.toLowerCase())) {
+    if (
+      !filteredVendors.some(
+        (vendor) =>
+          vendor.vendorName.toLowerCase() === searchQuery.toLowerCase()
+      )
+    ) {
       // No vendor selected, prevent form submission and display error message
       setIsRequiredChecked(true);
       return;
     }
 
     // Check if all other required fields are filled out
-    if (!date || !startTime || !endTime || !eventType || !numGuests || !serviceAddress || !comments) {
+    if (
+      !date ||
+      !startTime ||
+      !endTime ||
+      !eventType ||
+      !numGuests ||
+      !serviceAddress ||
+      !comments
+    ) {
       // Validation failed, not all fields are filled out
       setIsRequiredChecked(true);
       return;
     }
 
     // Simulate API call or data processing
-    console.log('Reservation details:', { date, startTime, endTime, eventType, numGuests, comments, serviceAddress });
+    console.log("Reservation details:", {
+      date,
+      startTime,
+      endTime,
+      eventType,
+      numGuests,
+      comments,
+      serviceAddress,
+    });
     setIsReserved(true);
     setIsRequiredChecked(false); // Reset required indication
     // Clear form fields
-    setDate('');
-    setStartTime('');
-    setEndTime('');
-    setEventType('');
-    setNumGuests('');
-    setComments('');
-    setServiceAddress('');
-    setSearchQuery(''); // Empty the search query
+    setDate("");
+    setStartTime("");
+    setEndTime("");
+    setEventType("");
+    setNumGuests("");
+    setComments("");
+    setServiceAddress("");
+    setSearchQuery(""); // Empty the search query
     setFilteredVendors([]); // Clear the filtered vendors list
     // Reset reservation status after 3 seconds
     setTimeout(() => {
@@ -128,9 +153,9 @@ export default function FoodTruckReservation() {
               key={index}
               variant="contained"
               style={{
-                margin: '5px', // Add margin for spacing between buttons
-                backgroundColor: 'var(--green)', // Set background color
-                color: 'var(--white)', // Set text color
+                margin: "5px", // Add margin for spacing between buttons
+                backgroundColor: "var(--green)", // Set background color
+                color: "var(--white)", // Set text color
               }}
               onClick={() => handleVendorSelection(vendor)}
             >
@@ -147,7 +172,13 @@ export default function FoodTruckReservation() {
           fullWidth
           margin="normal"
         />
-        <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            width: "100%",
+          }}
+        >
           <GreenTextField
             label="Start Time"
             type="time"
@@ -182,9 +213,13 @@ export default function FoodTruckReservation() {
           <MenuItem value="Holiday Party">Holiday Party</MenuItem>
           <MenuItem value="Fundraiser">Fundraiser</MenuItem>
           <MenuItem value="Galas and Balls">Galas and Balls</MenuItem>
-          <MenuItem value="Concerts and Festivals">Concerts and Festivals</MenuItem>
+          <MenuItem value="Concerts and Festivals">
+            Concerts and Festivals
+          </MenuItem>
           <MenuItem value="Family Reunions">Family Reunions</MenuItem>
-          <MenuItem value="Religious Celebrations">Religious Celebrations</MenuItem>
+          <MenuItem value="Religious Celebrations">
+            Religious Celebrations
+          </MenuItem>
           <MenuItem value="Networking Events">Networking Events</MenuItem>
           <MenuItem value="Community Events">Community Events</MenuItem>
           <MenuItem value="School Functions">School Functions</MenuItem>
@@ -223,18 +258,34 @@ export default function FoodTruckReservation() {
           required
           fullWidth
           margin="normal"
-          InputProps={{ classes: { root: 'MuiOutlinedInput-root' } }}
+          InputProps={{ classes: { root: "MuiOutlinedInput-root" } }}
         />
-        {isRequiredChecked && <p style={{ color: 'red' }}>All fields are required. Please review your entries.</p>}
+        {isRequiredChecked && (
+          <p style={{ color: "red" }}>
+            All fields are required. Please review your entries.
+          </p>
+        )}
         <Button
           type="submit"
           variant="contained"
-          style={{ backgroundColor: isReserved ? 'var(--green)' : 'var(--orange)', marginTop: '20px' }}
-          color={isReserved ? 'success' : 'primary'}
+          style={{
+            backgroundColor: isReserved ? "var(--green)" : "var(--orange)",
+            marginTop: "20px",
+          }}
+          color={isReserved ? "success" : "primary"}
         >
-          {isReserved ? <span style={{ color: 'var(--orange)' }}>TRUCK RESERVED</span> : 'Reserve Truck'}
+          {isReserved ? (
+            <span style={{ color: "var(--orange)" }}>TRUCK RESERVED</span>
+          ) : (
+            "Reserve Truck"
+          )}
         </Button>
-        {isReserved && <p style={{ color: 'var(--green)', marginTop: '10px' }}>Success! Truck reserved. The vendor will contact you son with more details.</p>}
+        {isReserved && (
+          <p style={{ color: "var(--green)", marginTop: "10px" }}>
+            Success! Truck reserved. The vendor will contact you son with more
+            details.
+          </p>
+        )}
       </form>
     </FormContainer>
   );
