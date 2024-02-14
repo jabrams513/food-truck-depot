@@ -95,7 +95,7 @@ const Navbar = () => {
                   Add Truck
                 </Link>
                 <a href="#" onClick={handleSignOut}>
-                  Sign out
+                  Sign Out
                 </a>
               </>
             )}
