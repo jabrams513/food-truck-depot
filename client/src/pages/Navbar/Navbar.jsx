@@ -32,10 +32,12 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      <div className={styles.logo}>
-        <img src={logo} alt="Logo" />
-        <p className={styles.logoText}> Food Truck Depot </p>
-      </div>
+      <a className={styles["logo-link"]} href="/">
+        <div className={styles.logo}>
+          <img src={logo} alt="Logo" />
+          <p className={styles.logoText}> Food Truck Depot </p>
+        </div>
+      </a>
       <div className={styles.searchBar}>
         <input type="text" placeholder="Search..." />
         <button type="submit" className={styles.searchButton}>
@@ -66,18 +68,10 @@ const Navbar = () => {
             <Link to="/" onClick={handleLinkClick}>
               Home
             </Link>
-            <Link to="/favorites" onClick={handleLinkClick}>
-              Favorites
-            </Link>
             <Link to="/map" onClick={handleLinkClick}>
               Map
             </Link>
-            <Link to="/reservations" onClick={handleLinkClick}>
-              Reservations
-            </Link>
-            <Link to="/addtruck" onClick={handleLinkClick}>
-              Add Truck
-            </Link>
+
             {!Auth.loggedIn() ? (
               <>
                 {" "}
@@ -89,9 +83,20 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <a href="#" onClick={handleSignOut}>
-                Sign out
-              </a>
+              <>
+                <Link to="/favorites" onClick={handleLinkClick}>
+                  Favorites
+                </Link>
+                <Link to="/reservations" onClick={handleLinkClick}>
+                  Reservations
+                </Link>
+                <Link to="/addtruck" onClick={handleLinkClick}>
+                  Add Truck
+                </Link>
+                <a href="#" onClick={handleSignOut}>
+                  Sign out
+                </a>
+              </>
             )}
           </div>
         )}

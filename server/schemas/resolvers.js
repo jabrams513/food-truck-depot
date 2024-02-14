@@ -54,29 +54,38 @@ const resolvers = {
             console.log(token);
             return {token, user};
         },
-        createFoodTruck: async (parent, {vendorName, description, image, popular, owner, location, latitude, longitude}, context) => {
-            if (context.user) {
-                const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: context.user.email, location, latitude, longitude});
+        createFoodTruck: async (parent, {vendorName, description, image, popular, category, owner, location, latitude, longitude}) => {
+
+            try {
+                console.log("LOGGING IN THE RESOLVER");
+                console.log(vendorName);
+                console.log(description);
+                console.log(image);
+                console.log(popular);
+                console.log(owner);
+                console.log(location);
+                console.log(latitude);
+                console.log(longitude);
+                console.log(category)
+                const foodTruck = await FoodTruck.create({vendorName: vendorName, description: description, image: image, popular: popular, owner: owner, location: location, latitude: latitude, longitude: longitude, category: category});
                 //add the foodTruck to the user's truck array
-                const user = await User.updateOne(
-                    {email: context.user.email},
-                    {$addToSet: {trucks: foodTruck}}
-                );
-                const token = signToken(user);
-                return {token, user};
-            }
-            else if (owner) {
-                const foodTruck = await FoodTruck.create({vendorName, description, image, popular, owner: owner, location, latitude, longitude});
-                //add the foodTruck to the user's truck array
+                console.log("CREATED FOOD TRUCK");
+                console.log(foodTruck);
                 const user = await User.updateOne(
                     {email: owner},
                     {$addToSet: {trucks: foodTruck}}
                 );
-                const token = signToken(user);
-                return {token, user};
+                console.log("LOGGING FOUND USER");
+                console.log(user);
+
+                return foodTruck;
+
+            }
+            catch (e) {
+                console.log(e);
+                throw AuthenticationError;
             }
 
-            throw AuthenticationError;
         },
 
         removeFoodTruck: async (parent, {foodTruckId}) => {

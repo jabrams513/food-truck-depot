@@ -45,22 +45,18 @@ export const SIGN_UP_USER = gql`mutation Mutation($email: String!, $password: St
   }
 }`;
 
-export const ADD_NEW_FOOD_TRUCK = gql`mutation Mutation($vendorName: String!, $description: String, $image: String, $popular: String, $owner: String, $location: String) {
-  createFoodTruck(vendorName: $vendorName, description: $description, image: $image, popular: $popular, owner: $owner, location: $location) {
-    token
-    user {
-      email
-      trucks {
-        _id
-        vendorName
-        description
-        image
-        popular
-        owner
-        location
-        latitude
-        longitude
-      }
-    }
+export const ADD_NEW_FOOD_TRUCK = gql`mutation Mutation($vendorName: String!, $description: String, $image: String, $popular: String, $owner: String, $location: String, $latitude: String, $longitude: String, $category: String) {
+  createFoodTruck(vendorName: $vendorName, description: $description, image: $image, popular: $popular, owner: $owner, location: $location, latitude: $latitude, longitude: $longitude, category: $category) {
+    _id
+    vendorName
+    description
+    image
+    popular
+    owner
+    location
+    latitude
+    longitude
+    category
   }
-}`
+}
+`

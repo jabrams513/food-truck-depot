@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.4",
-
-    "axios": "^1.6.7",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -21,6 +19,7 @@
     "@mui/icons-material": "^5.15.9",
     "@mui/material": "^5.15.9",
     "axios": "^1.6.7",
+    "dotenv": "^16.4.4",
     "graphql": "^16.8.1",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",

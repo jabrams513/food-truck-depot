@@ -66,16 +66,15 @@ const router = createBrowserRouter([
       {
         path: "/latin",
         element: <Latin />,
-      }, 
+      },
       {
         path: "/beverages",
         element: <Beverages />,
       },
       {
         path: "/food-truck/:truckId",
-        element: <FoodTruckPage vendors={vendors} />, 
+        element: <FoodTruckPage vendors={vendors} />,
       },
-      
     ],
   },
 ]);

@@ -68,7 +68,7 @@
   cursor: pointer;
   margin-left: 5px;
   /* aligns */
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .logo {
@@ -149,6 +149,10 @@ button {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+.logo-link {
+  text-decoration: none;
 }
 
 /* Media Query for small screens */
