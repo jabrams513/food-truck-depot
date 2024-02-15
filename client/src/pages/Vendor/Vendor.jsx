@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -14,22 +14,22 @@ import styles from "./Vendor.module.css";
 import * as vendors from "../../assets";
 
 const CustomCard = styled(Card)(({ theme }) => ({
-  backgroundColor: "var(--orange)", // Orange background color
-  color: "black", // Black text color
-  marginBottom: theme.spacing(2), // Add space between cards
-  width: "100%", // Set a fixed width for all cards
+  backgroundColor: "var(--orange)",
+  color: "black",
+  marginBottom: theme.spacing(2),
+  width: "100%",
 }));
 
 const LocationTypography = styled(Typography)({
-  fontSize: "1.2em", // Increase font size
-  marginBottom: "20px", // Add space between location and image
+  fontSize: "1.2em",
+  marginBottom: "20px",
 });
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
-  color: "black", // Black icon color
+  color: "black",
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
   marginLeft: "auto",
   transition: theme.transitions.create("transform", {
@@ -40,15 +40,20 @@ const ExpandMore = styled((props) => {
 const CardsContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center", // Center horizontally
+  alignItems: "center",
 });
 
 export default function Vendor({ vendor }) {
-  console.log("LOGGING VENDOR IN THE VENDOR COMPONENT");
-
-  console.log(vendor);
   const [expanded, setExpanded] = useState(false);
   const [favorited, setFavorited] = useState(false);
+
+  // Use local storage to save the the favorited status of a vendor 
+  useEffect(() => {
+    const isFavorited = localStorage.getItem(`favorited_${vendor._id}`);
+    if (isFavorited) {
+      setFavorited(true);
+    }
+  }, [vendor._id]);
 
   const { vendorName, description, image, popular, location } = vendor;
 
@@ -57,7 +62,13 @@ export default function Vendor({ vendor }) {
   };
 
   const handleFavoriteClick = () => {
-    setFavorited(!favorited);
+    const newFavorited = !favorited;
+    setFavorited(newFavorited);
+    if (newFavorited) {
+      localStorage.setItem(`favorited_${vendor._id}`, "true");
+    } else {
+      localStorage.removeItem(`favorited_${vendor._id}`);
+    }
   };
 
   return (
@@ -73,6 +84,7 @@ export default function Vendor({ vendor }) {
             }
           />
           <LocationTypography
+            style={{ fontFamily: "'Radley', serif" }}
             variant="body2"
             color="text.secondary"
             align="center"
