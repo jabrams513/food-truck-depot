@@ -52,6 +52,7 @@ export const QUERY_FOOD_TRUCKS = gql`query FoodTrucks {
     location
     latitude
     longitude
+    category
   }
 }`;
 
@@ -95,3 +96,15 @@ export const QUERY_FOOD_TRUCK_BY_ID = gql`query FoodTruckById($truckId: ID) {
     category
   }
 }`;
+
+export const QUERY_CATEGORY = gql`query Category($name: String!) {
+  category(name: $name) {
+    _id
+    name
+    image
+    description
+    trucks {
+      _id
+    }
+  }
+}`

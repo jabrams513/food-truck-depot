@@ -17,6 +17,7 @@ import Mediterranean from "./pages/Categories/Mediterranean.jsx";
 import Beverage from "./pages/Categories/beverage.jsx";
 import American from "./pages/Categories/american.jsx";
 import FoodTruckPage from "./pages/FoodTrucks/FoodTruckTemplate.jsx";
+import Category from "./pages/Categories/category.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,36 +49,12 @@ const router = createBrowserRouter([
         element: <Map />,
       },
       {
-        path: "/italian",
-        element: <Italian />,
-      },
-      {
-        path: "/american",
-        element: <American />,
-      },
-      {
-        path: "/asian",
-        element: <Asian />,
-      },
-      {
-        path: "/healthy",
-        element: <Healthy />,
-      },
-      {
-        path: "/Mexican",
-        element: <Mexican />,
-      },
-      {
-        path: "/beverage",
-        element: <Beverage />,
-      },
-      {
-        path: "/Mediterranean",
-        element: <Mediterranean />,
+        path: "/:categoryName",
+        element: <Category />,
       },
       {
         path: "/food-truck/:truckId",
-        element: <FoodTruckPage />, 
+        element: <FoodTruckPage />,
       },
     ],
   },
