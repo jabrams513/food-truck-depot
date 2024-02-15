@@ -66,7 +66,11 @@ export default function Vendor({ vendor }) {
         <a className={styles.foodtrucklink} href={`/food-truck/${vendor._id}`}>
           <CardHeader
             action={<IconButton aria-label="settings"></IconButton>}
-            title={vendorName}
+            title={
+              <Typography variant="h5" component="div" style={{ fontFamily: "'Radley', serif" }}>
+                {vendorName}
+              </Typography>
+            }
           />
           <LocationTypography
             variant="body2"
@@ -82,7 +86,7 @@ export default function Vendor({ vendor }) {
             alt={popular}
           />
           <CardContent>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" style={{ fontFamily: "'Radley', serif" }}>
               {description}
             </Typography>
           </CardContent>
@@ -104,7 +108,9 @@ export default function Vendor({ vendor }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>{popular}</Typography>
+            <Typography paragraph style={{ fontFamily: "'Radley', serif" }}>
+              {popular}
+            </Typography>
           </CardContent>
         </Collapse>
       </CustomCard>
