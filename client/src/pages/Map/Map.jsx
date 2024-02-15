@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./Map.module.css";
 import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
 import { useQuery } from "@apollo/client";
+
 mapboxgl.accessToken = REACT_APP_MAP_BOX_API;
 
 const Map = () => {
@@ -11,19 +12,34 @@ const Map = () => {
   const markers = useRef({});
   const { loading, data, refetch } = useQuery(QUERY_FOOD_TRUCKS);
   const vendorList = data?.foodTrucks || [];
+  const [userLocation, setUserLocation] = useState(null);
 
-  // useEffect to immediately refresh vendors list on page load
+  // Fetch user's location
   useEffect(() => {
-    refetch(); // Refresh vendors list on page load
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // Set user's location if available
+        setUserLocation([position.coords.longitude, position.coords.latitude]);
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+      }
+    );
+  }, []);
+
+  // Refresh vendors list on page load
+  useEffect(() => {
+    refetch();
   }, [refetch]);
 
+  // Initialize map
   useEffect(() => {
     if (!loading) {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v11",
-        center: [0, 0], // World Center coordinates (longitude, latitude)
-        zoom: 1, // Default zoom level (slightly zoomed out)
+        center: userLocation || [0, 0], // Center the map on user's location if available, else on world center
+        zoom: userLocation ? 10 : 1, // Set zoom level to 10 if user's location is available, else to 1
       });
 
       map.on("load", () => {
@@ -61,7 +77,7 @@ const Map = () => {
       // Cleanup
       return () => map.remove();
     }
-  }, [loading, vendorList]);
+  }, [loading, vendorList, userLocation]);
 
   return (
     <div>
