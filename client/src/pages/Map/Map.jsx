@@ -1,32 +1,34 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./Map.module.css";
 import { QUERY_FOOD_TRUCKS } from "../../utils/queries.js";
 import { useQuery } from "@apollo/client";
 mapboxgl.accessToken = REACT_APP_MAP_BOX_API;
-/* ("pk.eyJ1IjoiamFicmFtczUxMyIsImEiOiJjbHNpNGhoenoyNHM0MmpzNG50ZGw4eWF0In0.QtyIw-zXHg6o5pDjLHBZvA");
- */
+
 const Map = () => {
   const mapContainer = useRef(null);
   const markers = useRef({});
-  const { loading, data } = useQuery(QUERY_FOOD_TRUCKS);
+  const { loading, data, refetch } = useQuery(QUERY_FOOD_TRUCKS);
   const vendorList = data?.foodTrucks || [];
 
-  console.log(vendorList);
+  // useEffect to immediately refresh vendors list on page load
+  useEffect(() => {
+    refetch(); // Refresh vendors list on page load
+  }, [refetch]);
 
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [-74.006, 40.7128], // NYC coordinates (longitude, latitude)
-      zoom: 10, // Default zoom level (slightly zoomed out)
-    });
-    if (vendorList.length > 0) {
+    if (!loading) {
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [0, 0], // World Center coordinates (longitude, latitude)
+        zoom: 1, // Default zoom level (slightly zoomed out)
+      });
+
       map.on("load", () => {
         // Add markers for each vendor
         vendorList.forEach((vendor) => {
-          console.log(vendor);
           const el = document.createElement("div");
           el.className = styles.marker;
 
@@ -47,7 +49,7 @@ const Map = () => {
       map.on("move", () => {
         // Update marker positions when the map moves
         Object.entries(markers.current).forEach(([vendorName, marker]) => {
-          const vendor = vendors.find(
+          const vendor = vendorList.find(
             (vendor) => vendor.vendorName === vendorName
           );
           if (vendor) {
@@ -55,10 +57,11 @@ const Map = () => {
           }
         });
       });
+
+      // Cleanup
+      return () => map.remove();
     }
-    // Cleanup
-    return () => map.remove();
-  }, []);
+  }, [loading, vendorList]);
 
   return (
     <div>
