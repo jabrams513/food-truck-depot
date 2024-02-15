@@ -1,18 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Radley&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Radley&display=swap");
 
 :root {
-    --green: #41b643;
-    --orange: #F97242;
-    --white: #E6E6E6;
-  }
-
-body {
-    margin: 0;
+  --green: #41b643;
+  --orange: #f97242;
+  --white: #e6e6e6;
 }
 
-.cuisine {
-  grid-template-columns: repeat(2, 1fr);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+body {
+  margin: 0;
 }

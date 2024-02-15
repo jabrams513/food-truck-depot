@@ -2,13 +2,13 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-gap: 20px;
-  padding: 20px; 
+  padding: 20px;
   text-align: center;
   color: #41b643;
 }
 
 .card {
-  width: 40vw; 
+  width: 40vw;
   border: 1px solid #ccc;
   background-color: white;
   border-radius: 8px;
@@ -35,6 +35,13 @@
 .card-info p {
   color: #666;
   font-size: 16px;
+}
+
+.cuisine {
+  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

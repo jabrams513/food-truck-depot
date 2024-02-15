@@ -2,16 +2,16 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import styles from "./FoodTruckPage.module.css";
-import { QUERY_FOOD_TRUCK_BY_ID } from "../../utils/queries.js"; 
+import { QUERY_FOOD_TRUCK_BY_ID } from "../../utils/queries.js";
 
 const FoodTruckPage = () => {
   let { truckId } = useParams();
-  console.log(truckId)
+  console.log(truckId);
   const { loading, error, data } = useQuery(QUERY_FOOD_TRUCK_BY_ID, {
     variables: { truckId },
   });
 
-  console.log(data)
+  console.log(data);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -26,10 +26,8 @@ const FoodTruckPage = () => {
     location,
     latitude,
     longitude,
-    category
+    category,
   } = data.foodTruckById;
-
-
 
   return (
     <div>
@@ -45,7 +43,11 @@ const FoodTruckPage = () => {
           <p>Latitude: {latitude}</p>
           <p>Longitude: {longitude}</p>
           <p>Category: {category}</p>
-          <Link to="/reservations">Book Us</Link>
+          <div className={styles.reservationLinkContainer}>
+            <a className={styles.reservationLink} href="/reservations">
+              Book Us
+            </a>
+          </div>
         </div>
       </div>
     </div>
